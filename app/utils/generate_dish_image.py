@@ -2,9 +2,28 @@ from PIL import Image
 import requests
 from dashscope import ImageSynthesis
 import os
+import config
 
 def generate_dish_image(description):
-    """最终菜肴的图像"""
+    """
+    根据描述生成一张逼真的菜肴图片。
+
+    参数:
+        description (dict): 包含菜肴图像生成提示的字典，字段包括：
+            - 'style': 装盘风格描述
+            - 'ingredients_visual': 食材外观细节
+            - 'sauce_gloss': 酱汁的光泽表现
+            - 'photography_tips': 摄影技巧建议（如打光、构图）
+
+    功能:
+        - 构造一段详细的 food photography 提示词；
+        - 调用图像合成模型生成图片；
+        - 将生成的图像保存至本地 ./pictures/dish_image.png；
+        - 返回生成的 PIL.Image 图像对象。
+
+    返回:
+        PIL.Image.Image: 菜肴图片的对象，可用于展示或进一步处理。
+    """
     
     prompt = f"""
     根据以下食物摄影描述生成一张逼真的菜肴图片：
@@ -20,7 +39,7 @@ def generate_dish_image(description):
     - 自然光
     """
 
-    rsp = ImageSynthesis.call(api_key="sk-b8e09876066e40aab6ee92ba4a12629b",
+    rsp = ImageSynthesis.call(api_key=config.API_KEY_0,
                             model="wanx2.1-t2i-turbo",
                             prompt=prompt,
                             n=1,
