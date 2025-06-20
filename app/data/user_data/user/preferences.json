@@ -1,9 +1,9 @@
 {
     "ingredient_preferences": {},
     "nutrition_preferences": {
-        "calories": 584.0,
-        "protein": 38.0,
-        "fat": 24.4
+        "calories": 485.0,
+        "protein": 26.5,
+        "fat": 20.2
     },
     "flavor_preferences": {
         "spicy": 0.0,
